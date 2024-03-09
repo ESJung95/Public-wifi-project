@@ -33,8 +33,8 @@ public class ApiInsert {
             connection = DriverManager.getConnection(dbUrl, dbUserId, dbPassword);
 
             // 쿼리문 준비
-            String sql = "INSERT INTO public_wifi (MANAGE_NUM, REGION, WIFI_NAME, ADDRESS, ADDRESS_DETAIL, Y, X) "
-                    + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO public_wifi (MANAGE_NUM, REGION, WIFI_NAME, ADDRESS, ADDRESS_DETAIL, INSTALL_LOCATION, INSTALL_TYPE, INSTALL_AGENCY, SERVICE, NET_TYPE, INSTALL_YEAR, DOOR, WIFI_ENVIRONMENT, Y, X, INSTALL_DATE) "
+                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             statement = connection.prepareStatement(sql);
 
             // 각 페이지별로 API 호출하여 데이터 가져오기
@@ -105,13 +105,23 @@ public class ApiInsert {
         // 데이터 삽입
         for (int i = 0; i < row.size(); i++) {
             JSONObject rowInfo = (JSONObject) row.get(i);
+            
             String rowManageNum = (String) rowInfo.get("X_SWIFI_MGR_NO");
             String rowRegion = (String) rowInfo.get("X_SWIFI_WRDOFC");
             String rowWifiName = (String) rowInfo.get("X_SWIFI_MAIN_NM");
             String rowAddress1 = (String) rowInfo.get("X_SWIFI_ADRES1");
-            String rowAddress2 = (String) rowInfo.get("X_SWIFI_ADRES2");
+            String rowAddress2 = (String) rowInfo.get("X_SWIFI_ADRES2"); 
+            String installLocation = (String) rowInfo.get("X_SWIFI_INSTL_FLOOR");
+            String installType = (String) rowInfo.get("X_SWIFI_INSTL_TY");
+            String installAgency = (String) rowInfo.get("X_SWIFI_INSTL_MBY");
+            String service = (String) rowInfo.get("X_SWIFI_SVC_SE");
+            String netType = (String) rowInfo.get("X_SWIFI_CMCWR");
+            String installYear = (String) rowInfo.get("X_SWIFI_CNSTC_YEAR");
+            String door = (String) rowInfo.get("X_SWIFI_INOUT_DOOR");
+            String wifiEnvironment = (String) rowInfo.get("X_SWIFI_REMARS3");
             String rowY = (String) rowInfo.get("LAT");
             String rowX = (String) rowInfo.get("LNT");
+            String installDate = (String) rowInfo.get("WORK_DTTM");
 
             // 매개변수 설정
             statement.setString(1, rowManageNum);
@@ -119,8 +129,17 @@ public class ApiInsert {
             statement.setString(3, rowWifiName);
             statement.setString(4, rowAddress1);
             statement.setString(5, rowAddress2);
-            statement.setString(6, rowY);
-            statement.setString(7, rowX);
+            statement.setString(6, installLocation);
+            statement.setString(7, installType);
+            statement.setString(8, installAgency);
+            statement.setString(9, service);
+            statement.setString(10, netType);
+            statement.setString(11, installYear);
+            statement.setString(12, door);
+            statement.setString(13, wifiEnvironment);
+            statement.setString(14, rowY);
+            statement.setString(15, rowX);
+            statement.setString(16, installDate);
 
             // 쿼리 실행
             statement.executeUpdate();
