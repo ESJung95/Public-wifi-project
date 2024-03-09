@@ -1,4 +1,4 @@
-package openAPI;
+package com.OpenAPI;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

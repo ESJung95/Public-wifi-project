@@ -1,4 +1,4 @@
-package openAPI;
+package com.OpenAPI;
 
 public class WifiInfo {
     private String manageNum;
