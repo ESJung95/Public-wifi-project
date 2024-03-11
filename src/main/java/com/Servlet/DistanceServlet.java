@@ -16,6 +16,8 @@ import common.MysqlService;
 import com.Dao.HistoryDao;
 import com.Dto.NearWifiDto;
 
+// 거리구해서 가까운 20개만 반환 - dao로 옮겨야하나..?
+
 @WebServlet("/distance")
 public class DistanceServlet extends HttpServlet {
     

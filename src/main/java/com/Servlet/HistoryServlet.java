@@ -13,6 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.Dao.HistoryDao;
 import com.Dto.HistoryDto;
 
+// history정보 get으로 받아서 select
+// history정보 중 id값 post로 받아서 delete
+
 @WebServlet("/history")
 public class HistoryServlet extends HttpServlet {
     

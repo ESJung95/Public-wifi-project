@@ -14,7 +14,6 @@ import com.Dao.WifiDao;
 
 
 // open wifi 저장 시키고 완료 화면으로 이동
-// open wifi 정보 가져오기
 
 @WebServlet("/wifi.insert")
 public class WifiServlet extends HttpServlet {

@@ -49,7 +49,6 @@ public class WifiDao {
 			PreparedStatement statement = null;
 
 			try {
-				// 쿼리문 준비
 				String sql = "INSERT INTO public_wifi (MANAGE_NUM, REGION, WIFI_NAME, ADDRESS, ADDRESS_DETAIL, INSTALL_LOCATION, INSTALL_TYPE, INSTALL_AGENCY, SERVICE, NET_TYPE, INSTALL_YEAR, DOOR, WIFI_ENVIRONMENT, Y, X, INSTALL_DATE) "
 						+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 				statement = mysqlService.prepareStatement(sql);
@@ -59,7 +58,6 @@ public class WifiDao {
 					int start = (pageNo - 1) * numOfRows + 1;
 					int end = pageNo * numOfRows;
 
-					// API 호출 및 데이터 처리
 					processApiData(start, end, statement);
 				}
 
@@ -68,7 +66,7 @@ public class WifiDao {
 				e.printStackTrace();
 				System.out.println("SQLException이 발생했습니다: " + e.getMessage());
 			} finally {
-				// 리소스 해제
+				
 				if (statement != null) {
 					try {
 						statement.close();
@@ -83,14 +81,14 @@ public class WifiDao {
 			System.out.println("예외가 발생했습니다: " + e.getMessage());
 		}
 		
-		
+		// 전체 개수 = insert한 count
 		CountDao countDao = new CountDao();
 		return countDao.getCount();
 	}
 
 	
 	
-	// API 데이터를 가져와서 처리하는 메서드
+	// API 데이터를 가져와서 파싱하기
 	private static void processApiData(int start, int end, PreparedStatement statement) throws Exception {
 		// API 호출
 		StringBuilder urlBuilder = new StringBuilder(

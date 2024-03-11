@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+// 히스토리 필요한 정보
+
 @Getter
 @Setter
 @AllArgsConstructor

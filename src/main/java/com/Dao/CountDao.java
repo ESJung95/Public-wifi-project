@@ -17,7 +17,7 @@ public class CountDao {
         ResultSet resultSet = null;
 
         try {
-            // PreparedStatement 생성
+        	
             String sqlQuery = "SELECT COUNT(*) FROM public_wifi";
             preparedStatement = mysqlService.prepareStatement(sqlQuery);
 
@@ -26,14 +26,14 @@ public class CountDao {
 
             // 결과 처리
             if (resultSet.next()) {
-                count = resultSet.getInt(1); // 첫 번째 열의 값을 얻음
+                count = resultSet.getInt(1); 
                 System.out.println("total count : " + count);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            // 리소스 해제
-            if (resultSet != null) {
+
+        	if (resultSet != null) {
                 try {
                     resultSet.close();
                 } catch (SQLException e) {

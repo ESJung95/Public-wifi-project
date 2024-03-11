@@ -11,6 +11,7 @@ import com.Dto.HistoryDto;
 
 import common.MysqlService;
 
+// history 기록 (경도랑 위도) table insert
 public class HistoryDao {
 
 	public static int save(String latitude, String longitude) {

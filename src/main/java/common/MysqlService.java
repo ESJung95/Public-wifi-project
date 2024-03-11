@@ -56,14 +56,6 @@ public class MysqlService {
     
     
     // select
-//    public ResultSet select(String sql) throws SQLException {
-//        preparedStatement = conn.prepareStatement(sql);
-//        res = preparedStatement.executeQuery();
-//        return res;
-//    }
-    
-    
-    // select
     public ResultSet select(PreparedStatement preparedStatement) throws SQLException {
         return preparedStatement.executeQuery();
     }
@@ -84,6 +76,7 @@ public class MysqlService {
         return conn.prepareStatement(sql);
     }
 
+    // sql문만 넘기기
 	public PreparedStatement prepareStatement2(String sql) throws SQLException {
 		return conn.prepareStatement(sql);
 	}
