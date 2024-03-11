@@ -83,5 +83,9 @@ public class MysqlService {
     public PreparedStatement prepareStatement2 (String sql, int returnGeneratedKeys) throws SQLException {
         return conn.prepareStatement(sql);
     }
+
+	public PreparedStatement prepareStatement2(String sql) throws SQLException {
+		return conn.prepareStatement(sql);
+	}
     
 }
