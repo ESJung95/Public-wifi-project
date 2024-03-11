@@ -32,6 +32,8 @@
 
 ## ✅ 페이지별 기능
 ### 1. 공공 와이파이 정보(API) DB로 가져오기
+<img width="100%" src="https://github.com/ESJung95/Public-wifi-project/assets/155522048/8db3a259-85d5-4e7b-9a45-0d28f9e727e9"/>
+
 <img width="100%" src="https://github.com/ESJung95/Public-wifi-project/assets/155522048/709c3feb-349c-4530-8de6-62e9cc4ea0c8"/>
 
 ### 2. 내 위치 기반으로 근처 공공 Wifi 검색 (거리가 가까운 20개)
