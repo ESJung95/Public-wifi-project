@@ -37,14 +37,14 @@ th {
 	</div>
 
 	<div>
-		LAT : <input type="text" id="myLatitude" name="myLatitude" value="0.0">
-		, LNT : <input type="text" id="myLongitude" name="myLongitude"
-			value="0.0"> 
-			<input type="button" value="내 위치 가져오기"
-			onclick="getLocation()"> 
-			
-			<input type="button"
-			value="근처 WIFI 정보 보기" onclick="getNearbyWiFiInfo()" >
+		<form action="/distance">
+			LAT : <input type="text" id="myLatitude" name="myLatitude"
+				value="0.0"> , LNT : <input type="text" id="myLongitude"
+				name="myLongitude" value="0.0"> <input id="myLocationButton"
+				type="button" value="내 위치 가져오기" onclick="getLocation()"> <input
+				id="nearWifiButton" type="submit" value="근처 WIFI 정보 보기">
+
+		</form>
 	</div>
 
 	<table>
@@ -94,31 +94,9 @@ th {
 			document.getElementById("myLatitude").value = myLatitude;
 			document.getElementById("myLongitude").value = myLongitude;
 
-			sendLocation(myLatitude, myLongitude);
-		}
-
-		// 내 위치 정보 값 전달!
-		function sendLocation(myLatitude, myLongitude) {
-			var xhr = new XMLHttpRequest();
-			var url = "/distance"; // 서블릿의 URL로 수정 필요
-			xhr.open("GET", url + "?myLatitude=" + myLatitude + "&myLongitude="
-					+ myLongitude, true);
-			xhr.setRequestHeader("Content-Type", "application/json");
-			xhr.onreadystatechange = function() {
-				if (xhr.readyState === XMLHttpRequest.DONE) {
-					if (xhr.status === 200) {
-						// 응답 처리
-						console.log(xhr.responseText);
-					} else {
-						// 오류 처리
-						console.error('Request failed: ' + xhr.status);
-					}
-				}
-			};
-			xhr.send();
 		}
 	</script>
-	
+
 
 
 </body>

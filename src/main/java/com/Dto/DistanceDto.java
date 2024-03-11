@@ -6,14 +6,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class DistanceDto {
-    private String location;
-    private double distance;
-
-    public DistanceDto() {
-    }
-
-    public DistanceDto(String location, double distance) {
-        this.location = location;
-        this.distance = distance;
-    }
+    private double myLatitude;
+    private double myLongitude;
 }

@@ -56,11 +56,11 @@ public class MysqlService {
     
     
     // select
-    public ResultSet select(String sql) throws SQLException {
-        preparedStatement = conn.prepareStatement(sql);
-        res = preparedStatement.executeQuery();
-        return res;
-    }
+//    public ResultSet select(String sql) throws SQLException {
+//        preparedStatement = conn.prepareStatement(sql);
+//        res = preparedStatement.executeQuery();
+//        return res;
+//    }
     
     
     // select

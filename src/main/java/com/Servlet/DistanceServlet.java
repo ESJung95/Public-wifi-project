@@ -12,17 +12,28 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import common.MysqlService;
+
+import com.Dao.HistoryDao;
 import com.Dto.NearWifiDto;
 
 @WebServlet("/distance")
 public class DistanceServlet extends HttpServlet {
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String myLatitudeParam = request.getParameter("myLatitude");
+        System.out.println("test");
+        
+    	String myLatitudeParam = request.getParameter("myLatitude");
         String myLongitudeParam = request.getParameter("myLongitude");
+        System.out.println(myLatitudeParam);
+        System.out.println(myLongitudeParam);
+
 
         // null 체크
         if (myLatitudeParam != null && myLongitudeParam != null) {
+        	
+        	// 히스토리 table에 저장
+        	HistoryDao.save(myLatitudeParam, myLongitudeParam);
+        	
             double myLatitude = Double.parseDouble(myLatitudeParam);
             double myLongitude = Double.parseDouble(myLongitudeParam);
 
@@ -90,5 +101,7 @@ public class DistanceServlet extends HttpServlet {
         } else {
             System.out.println("파라미터가 없음");
         }
+        
+  
     }
 }
