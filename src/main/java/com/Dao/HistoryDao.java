@@ -73,4 +73,36 @@ public class HistoryDao {
 		}
 		return historyList;
 	}
+
+	// delete
+	public static boolean deleteHistoryById(int id) {
+	    boolean success = false;
+	    MysqlService mysqlService = null;
+	    try {
+	        mysqlService = MysqlService.getInstance();
+	        mysqlService.connect();
+
+	        String sql = "DELETE FROM HISTORY WHERE ID = ?";
+	        PreparedStatement statement = mysqlService.prepareStatement2(sql);
+	        statement.setInt(1, id);
+
+	        int rowsAffected = statement.executeUpdate();
+	        if (rowsAffected > 0) {
+	            System.out.println("ID가 " + id + "인 위치 기록이 성공적으로 삭제되었습니다.");
+	            success = true;
+	        } else {
+	            System.out.println("ID가 " + id + "인 위치 기록을 찾을 수 없습니다.");
+	        }
+
+	        statement.close();
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        System.out.println("ID가 " + id + "인 위치 기록을 삭제하는 동안 오류가 발생했습니다.");
+	    } finally {
+	        if (mysqlService != null) {
+	            mysqlService.disconnect();
+	        }
+	    }
+	    return success;
+	}
 }

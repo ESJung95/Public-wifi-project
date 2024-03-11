@@ -62,18 +62,45 @@ th {
 				<td><%=history.getLongitude()%></td>
 				<td><%=history.getLatitude()%></td>
 				<td><%=history.getSearchDate()%></td>
-				<td>삭제하기 버튼</td>
+				<td><button onclick="deleteHistory(<%=history.getId()%>)">삭제하기</button></td>
 			</tr>
 			<%
 			}
 			} else {
 			// 히스토리 리스트가 비어있을 때 메시지 출력
-			out.println("<tr><td colspan='3'>히스토리 내역이 없습니다.</td></tr>");
+			out.println("<tr><td colspan='4'>히스토리 내역이 없습니다.</td></tr>");
 			}
 			%>
 		</tbody>
 	</table>
 </body>
 
+<script>
+    function deleteHistory(id, row) {
+        var confirmation = confirm("정말로 삭제하시겠습니까?");
+        if (confirmation) {
+            // AJAX를 사용하여 서버에 삭제 요청을 보냄
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "history?id=" + id, true); // GET 요청으로 변경
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4) {
+                    if (xhr.status == 200) {
+                        // 삭제 성공 시 알림 창을 띄움
+                        alert("삭제가 성공적으로 수행되었습니다.");
+                        // 페이지를 다시 로드하여 변경된 내용을 표시
+                        window.location.reload();
+                        // 성공적으로 삭제되면 해당 행을 테이블에서도 삭제
+                        var table = document.getElementById("historyTable");
+                        table.deleteRow(row.rowIndex);
+                    } else {
+                        // 삭제 실패 시 알림 창을 띄움
+                        alert("삭제에 실패했습니다.");
+                    }
+                }
+            };
+            xhr.send(); // send 메서드에 인자를 전달하지 않음
+        }
+    }
+</script>
 
 </html>
