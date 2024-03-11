@@ -2,10 +2,10 @@ package com.Dto;
 
 import lombok.Data;
 
-// Open api 정보
+// 가까운 Open api 정보
 
 @Data
-public class WifiDto {
+public class NearWifiDto {
 	private String manageNum;
 	private String region;
 	private String wifiName;
@@ -22,5 +22,10 @@ public class WifiDto {
 	private String latitude;
 	private String longitude;
 	private String installDate;
+	
+    private String myLatitude;
+    private String myLongitude;
+    
+    private double distance;
 
 }

@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.Dao.WifiDao;
 
 
+// open wifi 저장 시키고 완료 화면으로 이동
+// open wifi 정보 가져오기
 
 @WebServlet("/wifi.insert")
 public class WifiServlet extends HttpServlet {
@@ -25,10 +27,10 @@ public class WifiServlet extends HttpServlet {
         try {
 			wifiDao.delete();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
-        String totalCount = wifiDao.save();
+        int totalCount = wifiDao.save();
 
        
 

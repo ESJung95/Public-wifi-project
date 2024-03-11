@@ -6,8 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+// db연결 해주기
 public class MysqlService {
-    // 필드
+	
     private static MysqlService mysqlService = null;
     
     private String url = "jdbc:mysql://localhost:3306/mission_db"; // 도메인 뒤에 접속할 데이터베이스명까지 넣는다.
@@ -18,7 +19,6 @@ public class MysqlService {
     private PreparedStatement preparedStatement;
     private ResultSet res;
     
-    // DB 연결을 여러 객체에서 하지 않도록
     
     public static MysqlService getInstance() {
         if (mysqlService == null) {
@@ -60,6 +60,12 @@ public class MysqlService {
         preparedStatement = conn.prepareStatement(sql);
         res = preparedStatement.executeQuery();
         return res;
+    }
+    
+    
+    // select
+    public ResultSet select(PreparedStatement preparedStatement) throws SQLException {
+        return preparedStatement.executeQuery();
     }
     
     // insert, delete

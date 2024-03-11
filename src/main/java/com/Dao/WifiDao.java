@@ -14,6 +14,8 @@ import org.json.simple.parser.JSONParser;
 
 import common.MysqlService;
 
+// open api 정보 delete ➡️ insert
+
 public class WifiDao {
 
 	// open api정보 저장 전 삭제하기
@@ -34,7 +36,7 @@ public class WifiDao {
 	}
 
 	// open api 정보 저장
-	public static String save() {
+	public static int save() {
 		try {
 			int totalData = 25162; 
 			int numOfRows = 1000;
@@ -80,9 +82,14 @@ public class WifiDao {
 			e.printStackTrace();
 			System.out.println("예외가 발생했습니다: " + e.getMessage());
 		}
-		return "total 수 구하기";
+		
+		
+		CountDao countDao = new CountDao();
+		return countDao.getCount();
 	}
 
+	
+	
 	// API 데이터를 가져와서 처리하는 메서드
 	private static void processApiData(int start, int end, PreparedStatement statement) throws Exception {
 		// API 호출
