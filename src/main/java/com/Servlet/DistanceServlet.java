@@ -19,11 +19,11 @@ import com.Dto.NearWifiDto;
 @WebServlet("/distance")
 public class DistanceServlet extends HttpServlet {
     
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("test");
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
     	String myLatitudeParam = request.getParameter("myLatitude");
         String myLongitudeParam = request.getParameter("myLongitude");
+        
         System.out.println(myLatitudeParam);
         System.out.println(myLongitudeParam);
 
@@ -96,7 +96,7 @@ public class DistanceServlet extends HttpServlet {
 
             // JSP로 데이터 전달
             request.setAttribute("publicWifiList", publicWifiList);
-            request.getRequestDispatcher("result.jsp").forward(request, response);
+            request.getRequestDispatcher("home.jsp").forward(request, response);
 
         } else {
             System.out.println("파라미터가 없음");

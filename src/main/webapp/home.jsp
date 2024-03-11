@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.util.List"%>
+<%@ page import="com.Dto.NearWifiDto"%>
 
 <!DOCTYPE html>
 <html>
@@ -37,14 +39,12 @@ th {
 	</div>
 
 	<div>
-		<form action="/distance">
-			LAT : <input type="text" id="myLatitude" name="myLatitude"
-				value="0.0"> , LNT : <input type="text" id="myLongitude"
-				name="myLongitude" value="0.0"> <input id="myLocationButton"
-				type="button" value="내 위치 가져오기" onclick="getLocation()"> <input
-				id="nearWifiButton" type="submit" value="근처 WIFI 정보 보기">
-
-		</form>
+<form action="/distance" method="POST">
+    LAT : <input type="text" id="myLatitude" name="myLatitude" value="0.0"> , 
+    LNT : <input type="text" id="myLongitude" name="myLongitude" value="0.0"> 
+    <input id="myLocationButton" type="button" value="내 위치 가져오기" onclick="getLocation()"> 
+    <input id="nearWifiButton" type="submit" value="근처 WIFI 정보 보기">
+</form>
 	</div>
 
 	<table>
@@ -71,11 +71,41 @@ th {
 		</thead>
 
 		<tbody>
-
+			<%
+			List<com.Dto.NearWifiDto> publicWifiList = (List<com.Dto.NearWifiDto>) request.getAttribute("publicWifiList");
+			if (publicWifiList != null) {
+				for (com.Dto.NearWifiDto wifi : publicWifiList) {
+			%>
+			<tr>
+				<td><%=wifi.getDistance()%></td>
+				<td><%=wifi.getManageNum()%></td>
+				<td><%=wifi.getRegion()%></td>
+				<td><%=wifi.getWifiName()%></td>
+				<td><%=wifi.getAddress1()%></td>
+				<td><%=wifi.getAddress2()%></td>
+				<td><%=wifi.getInstallLocation()%></td>
+				<td><%=wifi.getInstallType()%></td>
+				<td><%=wifi.getInstallAgency()%></td>
+				<td><%=wifi.getService()%></td>
+				<td><%=wifi.getNetType()%></td>
+				<td><%=wifi.getInstallYear()%></td>
+				<td><%=wifi.getDoor()%></td>
+				<td><%=wifi.getWifiEnvironment()%></td>
+				<td><%=wifi.getLatitude()%></td>
+				<td><%=wifi.getLongitude()%></td>
+				<td><%=wifi.getInstallDate()%></td>
+			</tr>
+			<%
+			}
+			} else {
+			// publicWifiList가 null인 경우 
+			out.println("<tr><td colspan='17'>위치 정보를 입력한 후에 조회해 주세요.</td></tr>");
+			}
+			%>
 		</tbody>
 	</table>
 
-	<p>위치 정보를 입력한 후에 조회해 주세요.</p>
+
 
 	<script>
 		// 내 위치 정보 가져오기
@@ -96,6 +126,7 @@ th {
 
 		}
 	</script>
+
 
 
 

@@ -38,14 +38,12 @@ th {
 	</div>
 
 	<div>
-		<form action="/distance">
 			LAT : <input type="text" id="myLatitude" name="myLatitude"
 				value="0.0"> , LNT : <input type="text" id="myLongitude"
 				name="myLongitude" value="0.0"> <input id="myLocationButton"
 				type="button" value="내 위치 가져오기" onclick="getLocation()"> <input
 				id="nearWifiButton" type="submit" value="근처 WIFI 정보 보기">
 
-		</form>
 	</div>
 
 	<table border="1">
