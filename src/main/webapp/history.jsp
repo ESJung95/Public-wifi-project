@@ -39,7 +39,7 @@ th {
 			href="wifi.insert">Open API 와이파이 정보 가져오기</a>
 	</div>
 
-	<table>
+	<table id="historyTable">
 		<thead>
 			<tr>
 				<th>ID</th>
@@ -79,17 +79,18 @@ th {
     function deleteHistory(id, row) {
         var confirmation = confirm("정말로 삭제하시겠습니까?");
         if (confirmation) {
-            // AJAX를 사용하여 서버에 삭제 요청을 보냄
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", "history?id=" + id, true); // GET 요청으로 변경
+
+        	var xhr = new XMLHttpRequest();
+            xhr.open("POST", "history", true); 
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
+            
             xhr.onreadystatechange = function() {
                 if (xhr.readyState == 4) {
                     if (xhr.status == 200) {
-                        // 삭제 성공 시 알림 창을 띄움
+                    	
                         alert("삭제가 성공적으로 수행되었습니다.");
-                        // 페이지를 다시 로드하여 변경된 내용을 표시
+                        // 페이지를 다시 로드 + 삭제
                         window.location.reload();
-                        // 성공적으로 삭제되면 해당 행을 테이블에서도 삭제
                         var table = document.getElementById("historyTable");
                         table.deleteRow(row.rowIndex);
                     } else {
@@ -98,7 +99,7 @@ th {
                     }
                 }
             };
-            xhr.send(); // send 메서드에 인자를 전달하지 않음
+            xhr.send("id=" + id); 
         }
     }
 </script>

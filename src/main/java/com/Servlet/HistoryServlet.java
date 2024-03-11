@@ -15,29 +15,34 @@ import com.Dto.HistoryDto;
 
 @WebServlet("/history")
 public class HistoryServlet extends HttpServlet {
+    
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
-    	List<HistoryDto> historyList = HistoryDao.getAllHistory();
-    	
+        // GET 요청 처리
+        List<HistoryDto> historyList = HistoryDao.getAllHistory();
         request.setAttribute("historyList", historyList);
         request.getRequestDispatcher("/history.jsp").forward(request, response);
+    }
     
     
         // delete
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // POST 요청 처리
         String idString = request.getParameter("id");
         if (idString != null && !idString.isEmpty()) {
             int id = Integer.parseInt(idString);
             boolean deleteResult = HistoryDao.deleteHistoryById(id);
             if (deleteResult) {
-                PrintWriter out = response.getWriter();
                 System.out.println("삭제 성공");
+                // 삭제 성공 시, 적절한 응답을 보낼 수 있습니다.
+                response.setStatus(HttpServletResponse.SC_OK);
             } else {
-                PrintWriter out = response.getWriter();
                 System.out.println("삭제 실패");
+                // 삭제 실패 시, 적절한 응답을 보낼 수 있습니다.
+                response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             }
         } else {
-            PrintWriter out = response.getWriter();
-            out.println("ID를 찾을 수 없습니다.");
+            // ID가 없는 경우에도 적절한 응답을 보낼 수 있습니다.
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         }
     }
 }
