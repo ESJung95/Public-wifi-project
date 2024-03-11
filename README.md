@@ -28,12 +28,20 @@
 - 라이브러리 : lombok, apache-tomcat-9.0.86, json.simple
 
 ## ✅ERD
+<img width="100%" src="https://github.com/ESJung95/Public-wifi-project/assets/155522048/6d4d1a51-3856-4517-b7db-b35fd1209ccd"/>
 
 ## ✅ 페이지별 기능
-1. 공공 와이파이 정보(API) DB로 가져오기
-2. 내 위치 기반으로 근처 공공 Wifi 검색 (거리가 가까운 20개)
-3. 검색한 히스토리 목록
-4. 히스토리 목록 삭제하기
+### 1. 공공 와이파이 정보(API) DB로 가져오기
+<img width="100%" src="https://github.com/ESJung95/Public-wifi-project/assets/155522048/709c3feb-349c-4530-8de6-62e9cc4ea0c8"/>
+
+### 2. 내 위치 기반으로 근처 공공 Wifi 검색 (거리가 가까운 20개)
+<img width="100%" src="https://github.com/ESJung95/Public-wifi-project/assets/155522048/4423b2b7-4e02-479d-be88-c762ea0c940c"/>
+
+### 3. 검색한 히스토리 목록
+<img width="100%" src="https://github.com/ESJung95/Public-wifi-project/assets/155522048/09835781-5cd8-4206-84e5-78a91b626372"/>
+
+### 4. 히스토리 목록 삭제하기
+<img width="100%" src="https://github.com/ESJung95/Public-wifi-project/assets/155522048/d63d5840-763b-490e-892b-f096c187e56d"/>
 
 ## ✅ 개선 사항
 - 객체지향에 대해서 더 공부하자 (Java의 정석)
