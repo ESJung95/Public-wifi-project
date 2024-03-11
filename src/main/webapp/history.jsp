@@ -8,26 +8,37 @@
 <head>
 <meta charset="UTF-8">
 <title>와이파이 정보 구하기</title>
-</head>
-<body>
-	<style>
-table {
-	border: 1px solid black;
-	border-color: gray;
-	width: 100%;
-}
+<head>
+    <meta charset="UTF-8">
+    <title>와이파이 정보 구하기</title>
+    <style>
+        table {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
 
-th, td {
-	padding: 8px;
-	text-align: left;
-	border-bottom: 1px solid #green;
-}
+        td, th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
 
-th {
-	background-color: green;
-	color: white;
-}
-</style>
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+        }
+    </style>
 </head>
 
 <body>
@@ -38,6 +49,7 @@ th {
 		<a href="/home.jsp">홈</a> | <a href="history">위치 히스토리 목록</a> | <a
 			href="wifi.insert">Open API 와이파이 정보 가져오기</a>
 	</div>
+	<br>
 
 	<table id="historyTable">
 		<thead>
@@ -58,7 +70,6 @@ th {
 			%>
 			<tr>
 				<td><%=history.getId()%></td>
-				<!-- ID를 가져와서 출력 -->
 				<td><%=history.getLongitude()%></td>
 				<td><%=history.getLatitude()%></td>
 				<td><%=history.getSearchDate()%></td>
@@ -67,7 +78,7 @@ th {
 			<%
 			}
 			} else {
-			// 히스토리 리스트가 비어있을 때 메시지 출력
+			// 히스토리 리스트가 비어있을 때 출력
 			out.println("<tr><td colspan='4'>히스토리 내역이 없습니다.</td></tr>");
 			}
 			%>
